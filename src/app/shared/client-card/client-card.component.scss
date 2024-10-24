@@ -1,0 +1,57 @@
+.card {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.more-info {
+  position: absolute;
+  display: flex;
+  width: 90%;
+  height: 100%;
+  flex-direction: column;
+  padding: 10px;
+  bottom: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2); /* Ombra superiore */
+}
+
+.more-info:hover {
+  bottom: -50px;
+}
+
+.more-info-top-bar, .more-info-middle , .more-info-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more-info-top-bar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more-info-bottom {
+  border: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  p {
+    margin: 0;
+  }
+}

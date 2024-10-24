@@ -1,1 +1,35 @@
-<p>client-list works!</p>
+@if (filters.length && partners.length) {
+  <div class="container">
+    <div class="top-bar">
+      <div class="filters">
+        <button [style.color]="'green'" mat-button (click)="onShowAll()"> Vedi tutti</button>
+        @for (filter of filters; track filter) {
+          <button mat-button
+                  (click)="onFilterClick(filter.name)"
+                  [style.color]="'green'"
+                  [id]="filter.id">{{ filter.name }}
+          </button>
+        }
+      </div>
+      <div class="search-bar" style="display: flex; align-items: center; border: 1px solid lightgray; padding: 10px; border-radius: 3px; width: 300px">
+        <mat-icon style="margin-right: 8px;">search</mat-icon>
+        <input
+          style="width: 200px; border: none; outline: none; background-color: transparent;"
+          [(ngModel)]="searchQuery"
+          placeholder="Type to search"
+        />
+        <button (click)="clearSearch()" *ngIf="searchQuery" mat-icon-button>
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card-container">
+      @for(partner of filteredPartners; track partner) {
+        <app-client-card  (navigate)="navigate($event)" style="  margin: 10px 0 10px 0;" [cards]="partner" />
+      }
+    </div>
+  </div>
+} @else {
+  <mat-spinner [strokeWidth]="2"></mat-spinner>
+}
+

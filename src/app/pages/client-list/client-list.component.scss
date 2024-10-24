@@ -1,0 +1,15 @@
+.top-bar{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters{
+  display: flex;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
