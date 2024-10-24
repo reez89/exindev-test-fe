@@ -12,7 +12,7 @@
         }
       </div>
       <div class="search-bar" style="display: flex; align-items: center; border: 1px solid lightgray; padding: 10px; border-radius: 3px; width: 300px">
-        <mat-icon style="margin-right: 8px;">search</mat-icon>
+        <mat-icon (click)="onSearch()" style="margin-right: 8px;">search</mat-icon>
         <input
           style="width: 200px; border: none; outline: none; background-color: transparent;"
           [(ngModel)]="searchQuery"

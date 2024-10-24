@@ -1,11 +1,9 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
-import {ClientListService} from '../../pages/services/client-list.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CardInterface} from '../interfaces/card.interface';
 import {MatCard} from '@angular/material/card';
 import {NgOptimizedImage, NgStyle} from '@angular/common';
 import {MatChip} from '@angular/material/chips';
 import {MatIcon} from '@angular/material/icon';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-client-card',
@@ -20,22 +18,9 @@ import {Router} from '@angular/router';
   templateUrl: './client-card.component.html',
   styleUrl: './client-card.component.scss'
 })
-export class ClientCardComponent implements OnInit {
+export class ClientCardComponent {
   @Input({required: true}) cards!: CardInterface;
-  @Output() navigate = new EventEmitter<any>()
-  private readonly clientSerivce = inject(ClientListService);
-  private router = inject(Router)
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
-
-  // core : #EEF4FF
-  // gold : #FFFAEB
-  // silver : lightgrey
-  // core plus : Blue light
+  @Output() navigate = new EventEmitter<any>();
 
   getColor(type: string): string {
     switch (type.toLowerCase()) {
@@ -46,18 +31,13 @@ export class ClientCardComponent implements OnInit {
       case 'silver':
         return 'lightgrey';
       case 'core plus':
-        return 'lightblue'; // Puoi personalizzare la tonalità di "Blue light" se necessario
+        return 'lightblue';
       default:
-        return '#FFFFFF'; // Colore di default (bianco) se non corrisponde nessun valore
+        return '#FFFFFF';
     }
   }
 
-
-  navigateToProfile(id: any) : void {
-    this.navigate.emit(id)
-    console.log('hello')
-
+  navigateToProfile(id: any): void {
+    this.navigate.emit(id);
   }
-
-
 }

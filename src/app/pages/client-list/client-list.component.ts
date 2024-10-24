@@ -38,9 +38,6 @@ export class ClientListComponent implements OnInit {
   private readonly clientSerivce = inject(ClientListService);
   private readonly router = inject(Router);
 
-  constructor() {
-  }
-
   ngOnInit(): void {
     this.clientSerivce.getList()
       .subscribe((data) => {
@@ -52,10 +49,17 @@ export class ClientListComponent implements OnInit {
 
   clearSearch() {
     this.searchQuery = '';
+    this.filteredPartners = [...this.partners];
   }
 
   onSearch(): void {
-    console.log('Search query:', this.searchQuery);
+    if (this.searchQuery) {
+      this.filteredPartners = this.partners.filter((partner: Partner) =>
+        partner.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      this.filteredPartners = [...this.partners];
+    }
   }
 
   onFilterClick(filterName: string) {

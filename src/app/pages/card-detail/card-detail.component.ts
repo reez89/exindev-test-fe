@@ -19,14 +19,11 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
   styleUrl: './card-detail.component.scss'
 })
 export class CardDetailComponent implements OnInit {
+  protected partnerDetail!: ItemDetailResponseInterface;
   private partnerId: string = '';
   private readonly route = inject(ActivatedRoute);
   private readonly clientService = inject(ClientListService);
-  protected partnerDetail!: ItemDetailResponseInterface;
-  private readonly location = inject(Location)
-
-  constructor() {
-  }
+  private readonly location = inject(Location);
 
   ngOnInit(): void {
     this.partnerId = this.route.snapshot.paramMap.get('id') || '';
@@ -37,6 +34,6 @@ export class CardDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back(); // Torna alla pagina precedente
+    this.location.back();
   }
 }
