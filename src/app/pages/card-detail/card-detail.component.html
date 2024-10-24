@@ -1,1 +1,8 @@
-
+<div style="display: flex; align-items: center">
+  <button (click)="goBack()" mat-button style="margin-right: 10px"><mat-icon>arrow_back</mat-icon></button>
+  @if (partnerDetail) {
+    <p style="margin: 0; font-weight: bold;">{{ partnerDetail.data.name }}</p>
+  } @else {
+    <mat-spinner [style.height.px]="40" [style.width.px]="40" strokeWidth="2"></mat-spinner>
+  }
+</div>
